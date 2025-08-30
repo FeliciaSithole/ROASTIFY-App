@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Dark cyberpunk theme */
+    --background: 240 10% 5%;
+    --foreground: 280 100% 95%;
+
+    --card: 240 10% 8%;
+    --card-foreground: 280 100% 95%;
+
+    --popover: 240 10% 8%;
+    --popover-foreground: 280 100% 95%;
+
+    /* Neon purple primary */
+    --primary: 270 100% 65%;
+    --primary-foreground: 240 10% 5%;
+
+    /* Dark secondary */
+    --secondary: 240 10% 15%;
+    --secondary-foreground: 280 100% 95%;
+
+    --muted: 240 10% 12%;
+    --muted-foreground: 280 30% 65%;
+
+    /* Neon green accent */
+    --accent: 120 100% 50%;
+    --accent-foreground: 240 10% 5%;
+
+    /* Aggressive red destructive */
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 280 100% 95%;
+
+    --border: 240 10% 20%;
+    --input: 240 10% 12%;
+    --ring: 270 100% 65%;
+
+    /* Custom roast colors */
+    --roast-mild: 45 100% 60%;
+    --roast-spicy: 15 100% 55%;
+    --roast-brutal: 0 100% 50%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(270 100% 65%), hsl(300 100% 50%));
+    --gradient-accent: linear-gradient(135deg, hsl(120 100% 50%), hsl(150 100% 45%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 100% 60%), hsl(15 100% 55%));
+    
+    /* Glitch effect */
+    --glitch-primary: 270 100% 65%;
+    --glitch-secondary: 120 100% 50%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Keep same as root for consistency */
+    --background: 240 10% 5%;
+    --foreground: 280 100% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono;
+  }
+}
+
+@layer components {
+  .glitch {
+    position: relative;
+    animation: glitch 2s infinite;
+  }
+  
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .glitch::before {
+    color: hsl(var(--glitch-primary));
+    animation: glitch-1 0.5s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  }
+  
+  .glitch::after {
+    color: hsl(var(--glitch-secondary));
+    animation: glitch-2 0.5s infinite;
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  }
+  
+  @keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+  }
+  
+  @keyframes glitch-1 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-1px, -1px); }
+    40% { transform: translate(-1px, -1px); }
+    60% { transform: translate(-1px, -1px); }
+    80% { transform: translate(-1px, -1px); }
+  }
+  
+  @keyframes glitch-2 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(1px, 1px); }
+    40% { transform: translate(1px, 1px); }
+    60% { transform: translate(1px, 1px); }
+    80% { transform: translate(1px, 1px); }
+  }
+  
+  .neon-glow {
+    box-shadow: 
+      0 0 5px hsl(var(--primary)),
+      0 0 10px hsl(var(--primary)),
+      0 0 15px hsl(var(--primary)),
+      0 0 20px hsl(var(--primary));
+  }
+  
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .text-gradient-accent {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
