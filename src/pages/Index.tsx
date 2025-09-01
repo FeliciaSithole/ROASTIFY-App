@@ -2,7 +2,7 @@ import { RoastTimer } from "@/components/RoastTimer";
 import { TaskList } from "@/components/TaskList";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import heroBanner from "@/assets/hero-banner.jpg";
+import heroBanner from "../assets/hero-banner.png";
 
 const MOTIVATIONAL_ROASTS = [
   "Stop scrolling and start studying, you absolute disappointment.",
